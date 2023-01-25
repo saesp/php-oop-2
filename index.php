@@ -10,13 +10,15 @@ Stampiamo delle card contenenti i dettagli dei prodotti -->
 class AnimalsProducts
 {
     // variabili
+    public $name;
     public $category;
     public $typology;
     public $price;
 
     // costruttore
-    public function __construct($_category, $_typology, $_price)
+    public function __construct($_name, $_category, $_typology, $_price)
     {
+        $this->name = $_name;
         $this->category = $_category;
         $this->typology = $_typology;
         $this->price = $_price;
@@ -26,20 +28,22 @@ class AnimalsProducts
     public function getHtml()
     {
         return
-            '<ul>
-            <li>Category: ' . $this->category . '</li>'
+            '<h3>' . $this->name . '</h3>'
+            . '<ul>
+                <li>Category: ' . $this->category . '</li>'
             . '<li>Typology: ' . $this->typology . '</li>'
             . '<li>Price: ' . $this->price . '</li>
-        </ul>';
-
+             </ul>';
     }
 }
 
-// Oggetti/Istanze
-$leash = new AnimalsProducts('dog', 'accessories', 15);
-$bone = new AnimalsProducts('dog', 'toys', 5);
-$ball = new AnimalsProducts('cat', 'toys', 3);
+// oggetti/istanze
+$products = [
+    $leash = new AnimalsProducts('Leash', 'dogs', 'accessories', 15),
+    $bone = new AnimalsProducts('Bone', 'dogs', 'toys', 5),
+    $ball = new AnimalsProducts('Ball', 'cats', 'toys', 3),
+];
 
-echo '<h2>Leash</h2>' . $leash->getHtml();
-echo '<h2>Bone</h2>' . $bone->getHtml();
-echo '<h2>Ball</h2>' . $ball->getHtml();
+foreach ($products as $product) {
+    echo $product->getHtml();
+}
