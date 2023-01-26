@@ -45,8 +45,33 @@
             }
         }
 
+        class Food extends AnimalsProducts
+        {
+            public $expiration;
+
+            public function __construct($_name, $_category, $_typology, $_price, $_expiration)
+            {
+                parent::__construct($_name, $_category, $_typology, $_price);
+                $this->expiration = $_expiration;
+            }
+
+            public function getHtml()
+            {
+                return '<h3>' . $this->name . '</h3>'
+                    . '<ul>
+            <li>Category: ' . $this->category . '</li>'
+                    . '<li>Typology: ' . $this->typology . '</li>'
+                    . '<li>Price: ' . $this->price . ' €</li>'
+                    . '<li>Expiration date: ' . $this->expiration . '</li>
+             </ul>';
+            }
+        }
+
+
         // oggetti/istanze
         $products = [
+            $meat = new Food('Meat', 'dogs', 'accessories', 4, '1/04/2023'),
+            $fish = new Food('Fish', 'cats', 'toys', 4, '28/02/2023'),
             $leash = new AnimalsProducts('Leash', 'dogs', 'accessories', 15),
             $bone = new AnimalsProducts('Bone', 'dogs', 'toys', 5),
             $ball = new AnimalsProducts('Ball', 'cats', 'toys', 3),
