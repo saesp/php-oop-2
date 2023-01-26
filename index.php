@@ -37,11 +37,9 @@
             {
                 return
                     '<h3>' . $this->name . '</h3>'
-                    . '<ul>
-                <li>Category: ' . $this->category . '</li>'
-                    . '<li>Typology: ' . $this->typology . '</li>'
-                    . '<li>Price: ' . $this->price . ' €</li>
-             </ul>';
+                    . '<div>Category: ' . $this->category . '</div>'
+                    . '<div>Typology: ' . $this->typology . '</div>'
+                    . '<div>Price: ' . $this->price . ' €</div>';
             }
         }
 
@@ -57,13 +55,9 @@
 
             public function getHtml()
             {
-                return '<h3>' . $this->name . '</h3>'
-                    . '<ul>
-            <li>Category: ' . $this->category . '</li>'
-                    . '<li>Typology: ' . $this->typology . '</li>'
-                    . '<li>Price: ' . $this->price . ' €</li>'
-                    . '<li>Expiration date: ' . $this->expiration . '</li>
-             </ul>';
+                return
+                    parent::getHtml()
+                    . '<div>Expiration date: ' . $this->expiration . '</div>';
             }
         }
 
